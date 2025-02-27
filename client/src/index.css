@@ -27,3 +27,22 @@ body {
     background: #f4f7f9;
     border-radius: 10px;
   }
+  .header {
+    display: flex;
+    
+  }
+  .header-button {
+    padding: 8px;
+    margin: 12px 8px 0 8px ;
+    border-radius: 10px;
+    background-color: #35cce6;
+    color: white;
+    min-width: 10%;
+    a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+    }
+    
+  }
+  

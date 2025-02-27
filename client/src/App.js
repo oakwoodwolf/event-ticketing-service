@@ -2,20 +2,14 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Client from './Client';
 import Agent from './Agent';
+import { Header } from './components/Header';
 
 const App = () => {
   return (
     <Router>
       <React.Fragment>
-        <ul>
-          <li>
-            <Link to='/'>Client Home</Link>
-          </li>
-          <li>
-            <Link to='/agent'>Agent Dashboard</Link>
-          </li>
-        </ul>
-        <hr />
+
+        <Header></Header>
         <Route exact path='/' component={Client} />
         <Route path='/agent' component={Agent} />
       </React.Fragment>
