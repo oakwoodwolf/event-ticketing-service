@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {CometChat} from '@cometchat-pro/chat';
-import config from './config';
-import { ChatBox } from './components/ChatBox';
-import { CustomerList } from './components/CustomerList';
+import config from '../config';
+import { ChatBox } from '../components/ChatBox';
+import { CustomerList } from '../components/CustomerList';
 
 export const agentUID = config.agentUID;
 const AGENT_MESSAGE_LISTENER_KEY = 'agent-listener'

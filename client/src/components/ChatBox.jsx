@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MDSpinner from 'react-md-spinner';
-import { agentUID } from '../Agent';
+import { agentUID } from '../Routes/Agent';
 
 export class ChatBox extends Component {
   render() {
