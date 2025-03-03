@@ -1,0 +1,12 @@
+{
+    "events": [
+      { "id": "1", "title": "Awesome concert", "views": 100 },
+      { "id": "2", "title": "elicnic pilectic", "views": 200 }
+    ],
+    "bookings": [
+        {"id": "1", "eventid": "1", "userid": "1", "paid":"1"}
+    ],
+    "users": [
+        {"id": "1", "name": "John Doe", "username": "johndoe", "email": "johndoe@acmecorp.net", "sms": "089111111", "role": "user"}
+    ]
+  }
