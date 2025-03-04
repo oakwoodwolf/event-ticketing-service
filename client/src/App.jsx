@@ -1,7 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Client from './Routes/Client';
 import Agent from './Routes/Agent';
+import AdminPage from './Routes/AdminPage';
 import { Header } from './components/Header';
 
 const App = () => {
@@ -10,8 +11,11 @@ const App = () => {
       <React.Fragment>
 
         <Header></Header>
-        <Route exact path='/' component={Client} /> 
-        <Route path='/agent' component={Agent} />
+        <Routes>
+          <Route exact path='/' element={<Client/>} /> 
+          <Route path='/agent' element={<Agent/>} />
+          <Route path='/admin/*' element={<AdminPage/>} />
+        </Routes>
       </React.Fragment>
     </Router>
   );

@@ -15,7 +15,7 @@ export class Header extends Component {
             <Link to='/agent'>Agent Dashboard</Link>
           </div>
           <div class="header-button">
-            <a href='http://localhost:5173'>Agent Dashboard</a>
+          <Link to='/admin/'>Admin Dashboard</Link>
           </div>
         </div>
         <hr />
