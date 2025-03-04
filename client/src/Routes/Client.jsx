@@ -49,7 +49,7 @@ class Client extends Component {
   }
   
   createUser = async () => {
-    const response = await fetch(`/api/create`)
+    const response = await fetch(`${config.baseURL}/api/create`)
     const result = await response.json()
     return result;
   }
@@ -115,7 +115,7 @@ class Client extends Component {
   }
 
   fetchAuthToken = async uid => {
-    const response = await fetch(`/api/auth?uid=${uid}`)
+    const response = await fetch(`${config.baseURL}/api/auth?uid=${uid}`)
     const result = await response.json()
     return result;
   }

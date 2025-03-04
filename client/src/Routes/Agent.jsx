@@ -17,7 +17,7 @@ class Agent extends Component {
     customerIsLoading:true
   }
   fetchAuthToken = async uid => {
-    const response = await fetch(`/api/auth?uid=${uid}`)
+    const response = await fetch(`${config.baseURL}/api/auth?uid=${uid}`)
     const result = await response.json()
     return result;
   }
@@ -74,7 +74,7 @@ class Agent extends Component {
   }
  
   fetchUsers = async () => {
-    const response = await fetch(`/api/users`)
+    const response = await fetch(`${config.baseURL}/api/users`)
     const result = await response.json()
     return result;
   }
