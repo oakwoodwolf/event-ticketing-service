@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import Client from './Routes/Client';
 import Agent from './Routes/Agent';
 import AdminPage from './Routes/AdminPage';
