@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/event-ticketing-service/static/css/main.719305d2.css",
-    "main.js": "/event-ticketing-service/static/js/main.e78cf7ff.js",
+    "main.js": "/event-ticketing-service/static/js/main.5f153479.js",
     "index.html": "/event-ticketing-service/index.html",
     "main.719305d2.css.map": "/event-ticketing-service/static/css/main.719305d2.css.map",
-    "main.e78cf7ff.js.map": "/event-ticketing-service/static/js/main.e78cf7ff.js.map"
+    "main.5f153479.js.map": "/event-ticketing-service/static/js/main.5f153479.js.map"
   },
   "entrypoints": [
     "static/css/main.719305d2.css",
-    "static/js/main.e78cf7ff.js"
+    "static/js/main.5f153479.js"
   ]
 }
