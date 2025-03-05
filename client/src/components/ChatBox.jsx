@@ -18,7 +18,7 @@ export class ChatBox extends Component {
         <div className='col-xl-12'>
           {chat
             .map(chat => <div key={chat.id} className="message">
-              <div className={`${chat.receiver !== agentUID ? 'balon1' : 'balon2'} p-3 m-1`}>
+              <div className={`${chat.receiver !== agentUID ? 'balon2' : 'balon1'} p-3 m-1`}>
                 {chat.text}
               </div>
             </div>)}

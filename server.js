@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
 const cors = require('cors');
+require('dotenv').config()
 
 const app = express();
 app.use(express.json());
@@ -22,12 +23,13 @@ function saveDatabase(data) {
 
 // enter CometChat Pro configurations here
 const agentUID = 'booking-agent';
-
-const chatUrl = 'https://271252330adce836.api-eu.cometchat.io/v3';
+const appID = process.env.COMETCHAT_APPID
+const region = process.env.COMETCHAT_REGION
+const chatUrl = `https://${appID}.api-${region}.cometchat.io/v3`;
 
 const headers = {
   'Content-Type': 'application/json',
-  'apiKey': '0c4c9e3143feaa21b5e8704b344285de022e197d',
+  'apiKey': process.env.COMETCHAT_APIKEY,
 };
 
 app.get('/api/create', (req, res) => {
