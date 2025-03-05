@@ -24,6 +24,11 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: cd client
-    - run: npm ci
-    - run: npm run deploy --if-present
+   
+    - name: Install dependencies
+      working-directory: ./client
+      run: npm ci
+
+    - name: Deploy
+      working-directory: ./client
+      run: npm run deploy --if-present
