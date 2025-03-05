@@ -1,12 +1,51 @@
 {
-    "events": [
-      { "id": "1", "title": "Awesome concert", "views": 100 },
-      { "id": "2", "title": "elicnic pilectic", "views": 200 }
-    ],
-    "bookings": [
-        {"id": "1", "eventid": "1", "userid": "1", "paid":"1"}
-    ],
-    "users": [
-        {"id": "1", "name": "John Doe", "username": "johndoe", "email": "johndoe@acmecorp.net", "sms": "089111111", "role": "user"}
-    ]
-  }
+  "events": [
+    {
+      "id": "1",
+      "title": "Awesome concert",
+      "views": 100
+    },
+    {
+      "id": "2",
+      "title": "elicnic pilectic",
+      "views": 200
+    },
+    {
+      "title": "New event",
+      "views": 0,
+      "id": "3"
+    }
+  ],
+  "bookings": [
+    {
+      "id": "1",
+      "eventid": "2",
+      "userid": "1",
+      "paid": "1"
+    },
+    {
+      "eventid": "2",
+      "userid": "2",
+      "paid": "0",
+      "id": "2"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "John Doe",
+      "username": "johndoe",
+      "email": "johndoe@acmecorp.net",
+      "sms": "089111111",
+      "role": "user"
+    },
+    {
+      "name": "Alen Test",
+      "username": "alentest",
+      "email": "royfla100@gmail.com",
+      "sms": "0894981",
+      "role": "admin",
+      "id": "2"
+    }
+  ]
+}

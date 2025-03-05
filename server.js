@@ -19,7 +19,13 @@ function getDatabase() {
 function saveDatabase(data) {
   fs.writeFileSync(dbPath, JSON.stringify(data, null, 2), 'utf-8');
 }
-
+function findMax(field) {
+  const maxId = field.reduce((max, event) => {
+    const id = Number(event.id);  // In case ids are stored as strings
+    return id > max ? id : max;
+  }, 0);
+  return maxId;
+}
 
 // enter CometChat Pro configurations here
 const agentUID = 'booking-agent';
@@ -95,12 +101,6 @@ return new Promise((resolve, reject) => {
 };
 
 // General API stuff
-app.get('/events', (req, res) => {
-  const db = getDatabase();
-  res.header('Access-Control-Expose-Headers', 'X-Total-Count');
-  res.header('X-Total-Count', db.events.length);
-  res.json(db.events);
-});
 
 app.get('/users', (req, res) => {
   const db = getDatabase();
@@ -117,6 +117,42 @@ app.get('/users/:id', (req, res) => {
     }
 
     res.json(user);
+});
+app.post('/users', (req, res) => {
+  const db = getDatabase();
+  const maxId = findMax(db.users);
+  const newEvent = { ...req.body, id: (maxId + 1).toString() };
+  db.users.push(newEvent);
+
+  saveDatabase(db);
+  res.status(201).json(newEvent);
+});
+app.put('/users/:id', (req, res) => {
+  const db = getDatabase();
+  const userIndex = db.users.findIndex(user => user.id === req.params.id);
+
+  if (userIndex === -1) {
+      return res.status(404).json({ message: 'User not found' });
+  }
+
+  const updatedUser = { ...db.users[userIndex], ...req.body };
+  db.users[userIndex] = updatedUser;
+
+  saveDatabase(db);
+  res.json(updatedUser);
+});
+
+app.delete('/users/:id', (req, res) => {
+  const db = getDatabase();
+  const userIndex = db.users.findIndex(user => user.id === req.params.id);
+
+  if (userIndex === -1) {
+      return res.status(404).json({ message: 'User not found' });
+  }
+
+  const deletedUser = db.users.splice(userIndex, 1)[0];
+  saveDatabase(db);
+  res.json(deletedUser);
 });
 
 app.get('/bookings', (req, res) => {
@@ -135,14 +171,57 @@ app.get('/bookings/:id', (req, res) => {
 
     res.json(booking);
 });
+app.post('/bookings', (req, res) => {
+  const db = getDatabase();
+  const maxId = findMax(db.bookings);
+  const newEvent = { ...req.body, id: (maxId + 1).toString() };
+  db.bookings.push(newEvent);
+
+  saveDatabase(db);
+  res.status(201).json(newEvent);
+});
+app.put('/bookings/:id', (req, res) => {
+  const db = getDatabase();
+  const bookingIndex = db.bookings.findIndex(booking => booking.id === req.params.id);
+
+  if (bookingIndex === -1) {
+      return res.status(404).json({ message: 'Booking not found' });
+  }
+
+  const updatedBooking = { ...db.bookings[bookingIndex], ...req.body };
+  db.bookings[bookingIndex] = updatedBooking;
+
+  saveDatabase(db);
+  res.json(updatedBooking);
+});
+app.delete('/bookings/:id', (req, res) => {
+  const db = getDatabase();
+  const bookingIndex = db.bookings.findIndex(booking => booking.id === req.params.id);
+
+  if (bookingIndex === -1) {
+      return res.status(404).json({ message: 'Booking not found' });
+  }
+
+  const deletedBooking = db.bookings.splice(bookingIndex, 1)[0];
+  saveDatabase(db);
+  res.json(deletedBooking);
+});
+
+
 app.post('/events', (req, res) => {
   const db = getDatabase();
-  const newEvent = req.body;
-
+  const maxId = findMax(db.events);
+  const newEvent = { ...req.body, id: (maxId + 1).toString() };
   db.events.push(newEvent);
 
   saveDatabase(db);
   res.status(201).json(newEvent);
+});
+app.get('/events', (req, res) => {
+  const db = getDatabase();
+  res.header('Access-Control-Expose-Headers', 'X-Total-Count');
+  res.header('X-Total-Count', db.events.length);
+  res.json(db.events);
 });
 app.get('/events/:id', (req, res) => {
   const db = getDatabase();
@@ -154,6 +233,33 @@ app.get('/events/:id', (req, res) => {
 
     res.json(event);
 });
+app.put('/events/:id', (req, res) => {
+  const db = getDatabase();
+  const eventIndex = db.events.findIndex(event => event.id === req.params.id);
+
+  if (eventIndex === -1) {
+      return res.status(404).json({ message: 'Event not found' });
+  }
+
+  const updatedEvent = { ...db.events[eventIndex], ...req.body };
+  db.events[eventIndex] = updatedEvent;
+
+  saveDatabase(db);
+  res.json(updatedEvent);
+});
+app.delete('/events/:id', (req, res) => {
+  const db = getDatabase();
+  const eventIndex = db.events.findIndex(event => event.id === req.params.id);
+
+  if (eventIndex === -1) {
+      return res.status(404).json({ message: 'Event not found' });
+  }
+
+  const deletedEvent = db.events.splice(eventIndex, 1)[0];
+  saveDatabase(db);
+  res.json(deletedEvent);
+});
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
