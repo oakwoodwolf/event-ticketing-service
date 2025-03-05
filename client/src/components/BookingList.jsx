@@ -1,5 +1,5 @@
 
-import { Datagrid, List, ReferenceField, ReferenceInput, TextField } from 'react-admin';
+import { Datagrid, List, ReferenceField, TextField } from 'react-admin';
 
 export const BookingList = () => (
     <List>

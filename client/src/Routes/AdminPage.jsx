@@ -1,4 +1,4 @@
-import { Admin, ListGuesser, Resource } from "react-admin";
+import { Admin, Resource } from "react-admin";
 import React, { Component } from "react";
 import { Layout } from "../Layout";
 import { dataProvider } from "../providers/DataProvider";
