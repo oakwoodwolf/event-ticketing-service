@@ -28,14 +28,14 @@ jobs:
     - name: Install dependencies
       working-directory: ./client
       run: npm ci --legacy-peer-deps
-    
-    - name: Set Git Identity
-      run: |
-        git config --global user.name "${GITHUB_ACTOR}"
-        git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+
+       
         
     - name: Deploy
       working-directory: ./client
-      run: npm run deploy --if-present
+      run: |
+        git config --global user.name "${GITHUB_ACTOR}"
+        git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com" 
+        npm run deploy --if-present
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
