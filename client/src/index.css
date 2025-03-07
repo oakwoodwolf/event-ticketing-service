@@ -45,4 +45,11 @@ body {
     }
     
   }
-  
+  .logon {
+    justify-self: end;
+    align-self: flex-end;
+    border-color: #35cce6;
+    color: #35cce6;
+    font-weight: 600;
+    background-color: white;
+  }

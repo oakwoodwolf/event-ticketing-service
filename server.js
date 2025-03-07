@@ -214,7 +214,7 @@ app.get('/bookings/:id', (req, res) => {
 app.post('/bookings', (req, res) => {
   const db = getDatabase();
   const maxId = findMax(db.bookings);
-  const newEvent = { ...req.body, id: (maxId + 1).toString() };
+  const newEvent = { ...req.body, id: (maxId + 1).toString(), datebooked: new Date().getTime() };
   db.bookings.push(newEvent);
 
   saveDatabase(db);

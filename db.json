@@ -3,17 +3,52 @@
     {
       "id": "1",
       "title": "Awesome concert",
-      "views": 100
+      "views": 100,
+      "timestart": "2025-03-14T10:00",
+      "timeend": "2025-04-14T10:45"
     },
     {
       "id": "2",
       "title": "elicnic pilectic",
-      "views": 200
+      "views": 200,
+      "timestart": "2025-03-14T10:00",
+      "timeend": "2025-04-14T10:45"
     },
     {
       "title": "New event",
       "views": 0,
-      "id": "3"
+      "id": "3",
+      "timestart": "2025-03-14T10:00",
+      "timeend": "2025-04-14T10:45"
+    },
+    {
+      "id": "4",
+      "title": "Tech Conference 2025",
+      "views": 500,
+      "timestart": "2025-03-14T10:00",
+      "timeend": "2025-04-14T10:45"
+    },
+    {
+      "id": "5",
+      "title": "Food Festival",
+      "views": 350,
+      "timestart": "2025-03-14T10:00",
+      "timeend": "2025-04-14T10:45"
+    },
+    {
+      "id": "6",
+      "title": "Gaming Expo",
+      "views": 420,
+      "timestart": "2025-03-14T10:00",
+      "timeend": "2025-04-14T10:45",
+      "thumbnail": {
+        "rawFile": {
+          "path": "./IMG_20241031_154537.jpg",
+          "relativePath": "./IMG_20241031_154537.jpg"
+        },
+        "src": "blob:http://localhost:3000/a6d3c4ff-08d4-4a0a-97a6-7f6aad766569",
+        "title": "IMG_20241031_154537.jpg"
+      }
     }
   ],
   "bookings": [
@@ -28,6 +63,30 @@
       "userid": "2",
       "paid": "0",
       "id": "2"
+    },
+    {
+      "id": "3",
+      "eventid": "1",
+      "userid": "1",
+      "paid": "1"
+    },
+    {
+      "id": "4",
+      "eventid": "4",
+      "userid": "2",
+      "paid": "1"
+    },
+    {
+      "id": "5",
+      "eventid": "5",
+      "userid": "3",
+      "paid": "0"
+    },
+    {
+      "id": "6",
+      "eventid": "6",
+      "userid": "4",
+      "paid": "1"
     }
   ],
   "users": [
@@ -46,6 +105,22 @@
       "sms": "0894981",
       "role": "admin",
       "id": "2"
+    },
+    {
+      "id": "3",
+      "name": "Maria Smith",
+      "username": "maria_s",
+      "email": "maria.smith@example.com",
+      "sms": "089222222",
+      "role": "user"
+    },
+    {
+      "id": "4",
+      "name": "David Johnson",
+      "username": "davidj",
+      "email": "david.johnson@example.com",
+      "sms": "089333333",
+      "role": "user"
     }
   ]
 }
