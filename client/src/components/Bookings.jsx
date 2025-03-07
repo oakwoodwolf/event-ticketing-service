@@ -1,8 +1,7 @@
 
-import { Datagrid, List, ReferenceField, TextField, TextInput, ChipField, Edit, Show, SimpleShowLayout, SimpleForm, ReferenceInput, Create  } from 'react-admin';
+import { Datagrid, List, ReferenceField, TextField, TextInput, ChipField, Edit, Show, SimpleShowLayout, SimpleForm, ReferenceInput, Create, SearchInput  } from 'react-admin';
 const bookingFilters = [
-    <ReferenceInput source="userId" label="User" reference="users" />,
-    <ReferenceInput source="eventId" label="Event" reference="events" />,
+    <SearchInput source="q" alwaysOn />,
 ];
 export const BookingList = () => (
     <List filters={bookingFilters}>

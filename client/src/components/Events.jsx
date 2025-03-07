@@ -1,7 +1,11 @@
-import { Datagrid, Create, List, NumberField, NumberInput, TextField, Edit, Show, SimpleShowLayout, SimpleForm, TextInput } from 'react-admin';
+import { Datagrid, Create, List, NumberField, NumberInput, TextField, Edit, Show, SimpleShowLayout, SimpleForm, TextInput, SearchInput } from 'react-admin';
+
+const postFilters = [
+    <SearchInput source="q" alwaysOn/>
+];
 
 export const EventList = () => (
-    <List>
+    <List filters={postFilters}>
         <Datagrid>
             <TextField source="id" />
             <TextField source="title" />

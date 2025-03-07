@@ -26,6 +26,50 @@ function findMax(field) {
   }, 0);
   return maxId;
 }
+function handleGetWithFilters(req, res, items) {
+  const { _start, _end, _sort, _order, q, ...filters } = req.query;
+
+  const start = parseInt(_start, 10) || 0;
+  const end = parseInt(_end, 10) || items.length;
+  let results = items;
+
+  // Apply filters if any exist
+  if (Object.keys(filters).length > 0) {
+      results = items.filter(item => {
+          return Object.keys(filters).every(key => {
+              const filterValue = filters[key];
+              const itemValue = item[key];
+
+              return String(itemValue) === String(filterValue);
+          });
+      });
+  }
+  if (q) { //React Admins search field query.
+      const searchTerm = q.toLowerCase();
+      results = results.filter(item => {
+          return Object.values(item).some(value =>
+              String(value).toLowerCase().includes(searchTerm)
+          );
+      });
+  }
+  // Sorting
+  if (_sort && _order) {
+      results.sort((a, b) => {
+          const valA = a[_sort];
+          const valB = b[_sort];
+
+          if (valA < valB) return _order === 'ASC' ? -1 : 1;
+          if (valA > valB) return _order === 'ASC' ? 1 : -1;
+          return 0;
+      });
+  }
+
+  // Apply pagination
+  const paginatedResults = results.slice(start, end);
+  res.header('Access-Control-Expose-Headers', 'X-Total-Count');
+  res.header('X-Total-Count', results.length);
+  res.json(paginatedResults);
+}
 
 // enter CometChat Pro configurations here
 const agentUID = 'booking-agent';
@@ -104,9 +148,7 @@ return new Promise((resolve, reject) => {
 
 app.get('/users', (req, res) => {
   const db = getDatabase();
-  res.header('Access-Control-Expose-Headers', 'X-Total-Count');
-  res.header('X-Total-Count', db.users.length);
-  res.json(db.users);
+  handleGetWithFilters(req, res, db.users);
 });
 app.get('/users/:id', (req, res) => {
   const db = getDatabase();
@@ -157,9 +199,7 @@ app.delete('/users/:id', (req, res) => {
 
 app.get('/bookings', (req, res) => {
   const db = getDatabase();
-  res.header('Access-Control-Expose-Headers', 'X-Total-Count');
-  res.header('X-Total-Count', db.bookings.length);
-  res.json(db.bookings);
+  handleGetWithFilters(req, res, db.bookings);
 });
 app.get('/bookings/:id', (req, res) => {
   const db = getDatabase();
@@ -219,9 +259,7 @@ app.post('/events', (req, res) => {
 });
 app.get('/events', (req, res) => {
   const db = getDatabase();
-  res.header('Access-Control-Expose-Headers', 'X-Total-Count');
-  res.header('X-Total-Count', db.events.length);
-  res.json(db.events);
+  handleGetWithFilters(req, res, db.events);
 });
 app.get('/events/:id', (req, res) => {
   const db = getDatabase();
