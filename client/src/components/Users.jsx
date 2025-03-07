@@ -1,4 +1,4 @@
-import { List, Datagrid, TextField, SearchInput, EmailField, ChipField, Show, SimpleShowLayout, Edit, SimpleForm, TextInput, Create } from "react-admin";
+import { List, Datagrid, TextField, SearchInput, EmailField, ChipField, Show, SimpleShowLayout, Edit, SimpleForm, TextInput, Create, TextArrayInput, ArrayField } from "react-admin";
 
 const postFilters = [
     <SearchInput source="q" alwaysOn/>
@@ -26,7 +26,7 @@ export const UserShow = () => (
             <TextField source="username" />
             <EmailField source="email" />
             <TextField source="sms" />
-            <ChipField source="role" />
+            <ChipField source="role"/>
         </SimpleShowLayout>
     </Show>
 );
@@ -39,7 +39,7 @@ export const UserEdit = () => (
             <TextInput source="username" />
             <TextInput source="email" />
             <TextInput source="sms" />
-            <TextInput source="role" />
+            <TextArrayInput source="role" options={["user","agent","admin"]}/>
         </SimpleForm>
     </Edit>
 );
@@ -51,7 +51,7 @@ export const UserCreate = () => (
             <TextInput source="username" />
             <TextInput source="email" />
             <TextInput source="sms" />
-            <TextInput source="role" />
+            <TextArrayInput source="role" options={["user","agent","admin"]}/>
         </SimpleForm>
     </Create>
 );

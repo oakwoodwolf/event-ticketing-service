@@ -64,7 +64,6 @@ function handleGetWithFilters(req, res, items) {
       });
   }
 
-  // Apply pagination
   const paginatedResults = results.slice(start, end);
   res.header('Access-Control-Expose-Headers', 'X-Total-Count');
   res.header('X-Total-Count', results.length);

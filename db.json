@@ -96,14 +96,19 @@
       "username": "johndoe",
       "email": "johndoe@acmecorp.net",
       "sms": "089111111",
-      "role": "user"
+      "role": [
+        "user",
+        "agent"
+      ]
     },
     {
       "name": "Alen Test",
       "username": "alentest",
       "email": "royfla100@gmail.com",
       "sms": "0894981",
-      "role": "admin",
+      "role": [
+        "admin"
+      ],
       "id": "2"
     },
     {
@@ -112,7 +117,10 @@
       "username": "maria_s",
       "email": "maria.smith@example.com",
       "sms": "089222222",
-      "role": "user"
+      "role": [
+        "user",
+        "admin"
+      ]
     },
     {
       "id": "4",
@@ -120,7 +128,9 @@
       "username": "davidj",
       "email": "david.johnson@example.com",
       "sms": "089333333",
-      "role": "user"
+      "role": [
+        "user"
+      ]
     }
   ]
 }
