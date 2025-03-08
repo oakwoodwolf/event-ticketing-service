@@ -13,7 +13,7 @@ import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import MuiCard from '@mui/material/Card';
 import { styled } from '@mui/material/styles';
-import { Navigate } from 'react-router-dom';
+import ReCAPTCHA from "react-google-recaptcha";
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: 'flex',
@@ -64,7 +64,7 @@ export default function SignIn(props) {
   const [passwordErrorMessage, setPasswordErrorMessage] = React.useState('');
   const [open, setOpen] = React.useState(false);
   const user = props.user;
-
+  let captcha = 0;
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -73,8 +73,13 @@ export default function SignIn(props) {
     setOpen(false);
   };
 
+  const onChange = (value) => {
+    captcha = value;
+    
+  }
+
   const handleSubmit = (event) => {
-    if (emailError || passwordError) {
+    if (emailError || passwordError || captcha == 0 ) {
       event.preventDefault();
       return;
     }
@@ -83,7 +88,7 @@ export default function SignIn(props) {
       email: data.get('email'),
       password: data.get('password'),
     });
-    user({ id: '1', name: 'robin', roles: ['admin', 'agent'], email: data.get('email') })
+    user({ id: '1', name: 'customer-agent', roles: ['admin', 'agent'], email: data.get('email') })
     };
 
   const validateInputs = () => {
@@ -172,6 +177,7 @@ export default function SignIn(props) {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
+            <ReCAPTCHA onChange={onChange} sitekey={"6LcOO-4qAAAAAGkASWtATKLtHQeDyNfwWxD4Ea5o"}/>
             <Button
               type="submit"
               fullWidth
