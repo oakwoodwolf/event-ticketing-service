@@ -3,9 +3,11 @@ const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
 const cors = require('cors');
+const status = require('express-status-monitor')();
 require('dotenv').config()
 
 const app = express();
+app.use(status);
 app.use(express.json());
 app.use(cors());
 
